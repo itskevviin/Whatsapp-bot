@@ -2,79 +2,73 @@
 
 ## Getting Started
 
-### Requirements
+### Prerequisites
 
-The app uses [Docker](https://www.docker.com/), so that's the only requirement.
+Ensure you have [Docker](https://www.docker.com/) installed, as it is the only requirement.
 
-### Build
+### Build the Application
 
-- Run `bash build.sh` in the project root folder.
+- Execute `bash build.sh` from the project's root directory.
 
-### Starting the Bot
+### Launching the Bot
 
-- Run `bash run.sh` in the project root folder.
-- When starting first time, you'll need to scan QR shown on terminal from your WhatsApp.
+- Run `bash run.sh` in the project's root directory.
+- For the initial setup, you will need to scan the QR code displayed in the terminal with your WhatsApp.
 
 ## Available Plugins
 
 ### Mirror
 
-- Bot will reply to any message in the format `!mirror!<message>` with `<message>`.
-- Just for fun, can also be used to check if the Bot is running or not.
+- The bot will respond to any message formatted as `!mirror!<message>` with `<message>`.
+- This feature is primarily for fun and can also be used to verify if the bot is active.
 
 ### TagEveryone
 
-- Bot will reply to any message containing the word `@all` (case insensitive) and tag all the members in the group.
-- To avoid spam, this will work only in groups having < 100 members.
-- No usecase in personal conversations.
+- The bot will reply to any message containing the word `@all` (case insensitive) by tagging all the group members.
+- To prevent spam, this feature is restricted to groups with fewer than 100 members.
+- This functionality is not applicable to personal conversations.
 
 ### Roles
 
-- Ability to create custom roles (like in Discord) to tag a specific set of members in a group.
-- You can list roles, create new roles, delete roles and add or remove members from role.
-- Message `!role help` to learn how to use the functionalities.
-  - You can do `@me` to simulate tagging yourself.
-- Bot will reply to any message containing the word `@<role>` (case insensitive), where `<role>` can be any role created and tag all the members of that role.
-- `NOTE`: Roles currently span across groups and chats. So one role can contain members from multiple group (and yes, you'll be able to tag people from other groups without them knowing!).
-  - Everyone who is able to chat with your Bot will be able to change any data (of any role) by using the role commands.
-  - Maybe improve this by creating an issue and opening a PR :)
+- Allows the creation of custom roles (similar to Discord) to tag specific groups of members.
+- You can list roles, create new ones, delete roles, and add or remove members from roles.
+- Send `!role help` to learn how to use these features.
+  - You can use `@me` to simulate tagging yourself.
+- The bot will respond to any message containing `@<role>` (case insensitive), where `<role>` is any created role, by tagging all members of that role.
+- `NOTE`: Roles are shared across groups and chats, so a role can include members from multiple groups (allowing you to tag people in other groups without their knowledge).
+  - Anyone who can chat with your bot can modify any role data using the role commands.
+  - Consider enhancing this by creating an issue and submitting a PR :)
 
 ## Configuration
 
-Some functionality of the Bot & plugins can be changed without code through `config.js`.
+Certain bot and plugin functionalities can be modified without altering the code through `config.js`.
 
 ### Bot Configuration
 
-- `authFolder`: Represents the name of directory (in the project root) that will contain:
+- `authFolder`: Specifies the directory name (in the project root) containing:
+  - Your WhatsApp authentication details (so you don’t need to scan the QR code every time).
+  - Information about the last processed message. Upon restarting, the bot will process all messages after the last processed one.
+  - `NOTE`: This contains private data, so DO NOT share it.
 
-  - authentication details of your WhatsApp (so that you don't need to scan the QR everytime)
-  - Details about last processed message. When the Bot starts again, all messages after the last processed message will be processed.
-  - `NOTE`: It contains private data, DO NOT share it.
+- `selfReply`: If set to `false`, the bot will not respond to its own messages.
+  - If set to `true`, be cautious as it could lead to the bot sending messages in an endless loop.
 
-- `selfReply`: If `false`, the bot will not reply to its own messages.
+- `logMessages`: If set to `true`, each message received by your bot will be logged to the console.
+  - This can also help you read messages without triggering the Blue Tick ;)
 
-  - Be careful if turning it to `true`, as it can be exploited to make the Bot keep sending messages in loop.
-
-- `logMessages`: If `true`, each message that your Bot recieves will be logged on to the console.
-
-  - Can also help you read messages without the Blue Tick ;)
-
-### Plugins Configuration
+### Plugin Configuration
 
 - Mirror
-
-  - `prefix`: Mirror the messages that start with the given prefix.
+  - `prefix`: Only mirror messages that start with the specified prefix.
 
 - Tag Everyone
-
-  - `membersLimit`: Since tag everyone can be easily used to spam, the plugin won't trigger if the number of members in the group is more than the given limit.
-  - `trigger`: Tag everyone whenever someone tags the trigger keyword (@\<trigger\>).
+  - `membersLimit`: To prevent spamming, the plugin will not trigger if the group has more members than the specified limit.
+  - `trigger`: The bot will tag everyone when the specified trigger keyword (@<trigger>) is mentioned.
 
 - Roles
+  - `dataFiles`: Specifies the file name (in the project root) to store all role-related data.
+  - `prefix`: All role commands (except for role tagging) must start with the specified prefix.
+  - `updateOnAdd`: If set to `true`, the bot will send a message (in the chat where the command is given) whenever a member is added to any role.
+  - `updateOnRemove`: If set to `true`, the bot will send a message (in the chat where the command is given) whenever a member is removed from any role.
 
-  - `dataFiles`: Represents the name of file (in the project root) to store all data related to roles.
-  - `prefix`: All role commands (excluding role tagging) must start with the given prefix.
-  - `updateOnAdd`: If `true`, the Bot will send a message (in the chat where the command is given) on adding each member in any given role.
-  - `updateOnRemove`: If `true`, the Bot will send a message (in the chat where the command is given) on removing each member in any given role.
-
-> Feel free to create issues, open PRs and contribute :)
+> Feel free to create issues, submit PRs, and contribute :)
