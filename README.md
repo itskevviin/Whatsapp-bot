@@ -71,4 +71,4 @@ Certain bot and plugin functionalities can be modified without altering the code
   - `updateOnAdd`: If set to `true`, the bot will send a message (in the chat where the command is given) whenever a member is added to any role.
   - `updateOnRemove`: If set to `true`, the bot will send a message (in the chat where the command is given) whenever a member is removed from any role.
 
-> Feel free to create issues, submit PRs, and contribute :)
+
