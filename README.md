@@ -13,7 +13,6 @@ Ensure you have [Docker](https://www.docker.com/) installed, as it is the only r
 ### Launching the Bot
 
 - Run `bash run.sh` in the project's root directory.
-- For the initial setup, you will need to scan the QR code displayed in the terminal with your WhatsApp.
 
 ## Available Plugins
 
