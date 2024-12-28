@@ -10,3 +10,4 @@ RUN npm ci
 COPY --chown=node:node . .
 
 ENTRYPOINT [ "npm", "start" ]
+
