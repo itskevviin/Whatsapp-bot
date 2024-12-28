@@ -36,7 +36,6 @@ Ensure you have [Docker](https://www.docker.com/) installed, as it is the only r
 - The bot will respond to any message containing `@<role>` (case insensitive), where `<role>` is any created role, by tagging all members of that role.
 - `NOTE`: Roles are shared across groups and chats, so a role can include members from multiple groups (allowing you to tag people in other groups without their knowledge).
   - Anyone who can chat with your bot can modify any role data using the role commands.
-  - Consider enhancing this by creating an issue and submitting a PR :)
 
 ## Configuration
 
