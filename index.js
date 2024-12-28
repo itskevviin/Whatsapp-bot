@@ -18,3 +18,4 @@ const bot = new Bot(plugins, botConfig);
   await bot.connect();
   await bot.run();
 })();
+
