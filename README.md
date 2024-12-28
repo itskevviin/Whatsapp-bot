@@ -25,7 +25,7 @@ Ensure you have [Docker](https://www.docker.com/) installed, as it is the only r
 ### TagEveryone
 
 - The bot will reply to any message containing the word `@all` (case insensitive) by tagging all the group members.
-- To prevent spam, this feature is restricted to groups with fewer than 100 members.
+- To prevent spam, this feature is restricted to groups with fewer than 50 members.
 - This functionality is not applicable to personal conversations.
 
 ### Roles
